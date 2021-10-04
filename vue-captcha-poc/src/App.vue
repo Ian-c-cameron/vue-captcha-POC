@@ -10,16 +10,19 @@
 </template>
 
 <script>
-import { Recaptcha } from 'common-lib-vue';
+import Recaptcha from 'common-lib-vue';
 
 export default {
   name: 'App',
   components: {
-    Recaptcha
+    'Recaptcha': Recaptcha,
   },
   data: () => {
     return {
       recaptchaPublicKey: "6LfHcJcbAAAAAJA_kkeR4AXt92hSUpCxb-mKeWkT",
+      recaptchaAPIBasePath: "https://recaptcha-service-e1aae2-dev.apps.silver.devops.gov.bc.ca",
+      applicationUuid: "Testing",
+      isRecaptchaValid: false,
     }
   },
   methods:  {
@@ -30,7 +33,7 @@ export default {
     handleCaptchaVerified(captchaToken) {
       console.log("Verified", captchaToken);
       // this.$store.dispatch(formModule + '/' + SET_CAPTCHA_TOKEN, captchaToken);
-      // this.isCaptchaValid = true;
+      this.isCaptchaValid = true;
       // setTimeout(() => {
       //   this.focusableEls = this.getFocusableEls();
       // }, 0);
