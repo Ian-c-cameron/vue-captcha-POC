@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <Recaptcha v-if="!isRecaptchaValid"
                     :apiBasePath="recaptchaAPIBasePath"
                     :nonce="applicationUuid"
@@ -10,12 +9,12 @@
 </template>
 
 <script>
-import Recaptcha from 'common-lib-vue';
+import {Recaptcha} from 'common-lib-vue';
 
 export default {
   name: 'App',
   components: {
-    'Recaptcha': Recaptcha,
+    Recaptcha,
   },
   data: () => {
     return {
@@ -26,14 +25,14 @@ export default {
     }
   },
   methods:  {
-    getFocusableEls() {
-      // Create an array of focusable elements from the contents of the modal
-      return Array.from(this.$refs.modal.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button, [tabindex="0"]'));
-    },
+    // getFocusableEls() {
+    //   // Create an array of focusable elements from the contents of the modal
+    //   return Array.from(this.$refs.modal.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button, [tabindex="0"]'));
+    // },
     handleCaptchaVerified(captchaToken) {
       console.log("Verified", captchaToken);
       // this.$store.dispatch(formModule + '/' + SET_CAPTCHA_TOKEN, captchaToken);
-      this.isCaptchaValid = true;
+      this.isRecaptchaValid = true;
       // setTimeout(() => {
       //   this.focusableEls = this.getFocusableEls();
       // }, 0);
@@ -42,13 +41,4 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
